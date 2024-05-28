@@ -1,7 +1,6 @@
 package org.example.javachat;
 
 import Util.FXUtil;
-import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,7 +13,7 @@ import javafx.stage.Stage;
 
 import static org.example.javachat.Main.changeView;
 
-public class Login
+public class signUp
 {
     // 主界面
     @FXML
@@ -29,24 +28,18 @@ public class Login
     // 密码输入框
     @FXML
     public PasswordField password;
-    // 登录按钮
-    @FXML
-    public Button loginButton;
     // 注册按钮
     @FXML
-    public Button logUpButton;
+    public Button signUpButton;
     // 注册按钮的标签
     @FXML
-    private Label logupLabel;
+    private Label accountLabel;
     // 账户为空时的错误提示
     @FXML
     private Label accountEmptyError;
     // 密码为空时的错误提示
     @FXML
     private Label passwordEmptyError;
-    // 账户或密码错误时的错误提示
-    @FXML
-    public Label passwordOrAccountError;
     // 头像
     @FXML
     public ImageView avatar;
@@ -68,6 +61,39 @@ public class Login
     // 最小化按钮的覆盖装饰
     @FXML
     private Label closeButtonLabelHover;
+    // 密码标签
+    @FXML
+    private Label passwordLabel;
+    // 右上角Logo
+    @FXML
+    private Label Logo;
+    // 选择头像按钮
+    @FXML
+    private Button selectAvatar;
+    // 选择头像按钮的标签
+    @FXML
+    private Label selectAvatarLabel;
+    // 选择头像按钮的覆盖装饰
+    @FXML
+    private Label selectAvatarHover;
+    // 重复密码输入框
+    @FXML
+    private PasswordField passwordAgain;
+    // 重复密码标签
+    @FXML
+    private Label passwordAgainLabel;
+    // 重复密码为空时的错误提示
+    @FXML
+    private Label passwordAgainError;
+    // 返回按钮
+    @FXML
+    private Button returnToLogInButton;
+    // 返回按钮的标签
+    @FXML
+    private Label returnToLogInLabel;
+    // 返回按钮的覆盖装饰
+    @FXML
+    private Label returnToLogInLabelHover;
 
 
     // 初始化
@@ -75,34 +101,21 @@ public class Login
     public void initialize()
     {
         FXUtil.initLogin(mainPane , closeButton , minimizeButton , avatar);
+        mainPane.getChildren().remove(selectAvatar);
+        mainPane.getChildren().add(selectAvatar);
+        mainPane.getChildren().remove(returnToLogInButton);
+        mainPane.getChildren().add(returnToLogInButton);
     }
 
-
-    @FXML
-    public void doLogup()
+    public void doSignUp()
     {
-        System.out.println("Logup");
-        logupLabel.setStyle("-fx-text-fill: blue;");
-        changeView("signUp.fxml");
+
     }
 
-    @FXML
-    public void doLogin()
+    public void returnToLogIn()
     {
-        String accountStr = account.getText();
-        String passwordStr = password.getText();
-        accountEmptyError.setVisible(false);
-        passwordEmptyError.setVisible(false);
-        if (FXUtil.isEmpty(accountStr))
-        {
-            accountEmptyError.setVisible(true);
-            return;
-        }
-        if (FXUtil.isEmpty(passwordStr))
-        {
-            passwordEmptyError.setVisible(true);
-            return;
-        }
+        System.out.println("Login");
+        changeView("Login.fxml");
     }
 
     @FXML
@@ -173,4 +186,28 @@ public class Login
         minimizeButton.setOnMouseExited(event -> minButtonLabelHover.setVisible(false));
     }
 
+
+    @FXML
+    public void hoverselectAvatarButton()
+    {
+        selectAvatar.setOnMouseEntered(event -> selectAvatarHover.setVisible(true));
+    }
+
+    @FXML
+    public void exitselectAvatarButton()
+    {
+        selectAvatar.setOnMouseExited(event -> selectAvatarHover.setVisible(false));
+    }
+
+    @FXML
+    public void hoverToLogInButton()
+    {
+        returnToLogInButton.setOnMouseEntered(event -> returnToLogInLabelHover.setVisible(true));
+    }
+
+    @FXML
+    public void exitToLogInButton()
+    {
+        returnToLogInButton.setOnMouseExited(event -> returnToLogInLabelHover.setVisible(false));
+    }
 }

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="mainPane" onMouseDragged="#dragWindow" onMousePressed="#settleUponWindow"
+            onMouseReleased="#setWindow" prefHeight="365.0" prefWidth="394.0"
+            style="-fx-border-radius: 150px; -fx-background-color: linear-gradient(to bottom right, rgb(114, 135, 254), rgb(130, 88, 186));"
+            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.javachat.signUp">
+    <children>
+        <TextField fx:id="account" layoutX="153.0" layoutY="177.0"/>
+        <PasswordField fx:id="password" layoutX="153.0" layoutY="228.0"/>
+        <Button fx:id="signUpButton" layoutX="153.0" layoutY="322.0" mnemonicParsing="false" onAction="#doSignUp"
+                prefHeight="23.0" prefWidth="106.0" style="-fx-background-color: skyblue; -fx-background-radius: 50px;"
+                text="注册" textFill="#575757">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Button>
+        <Label fx:id="accountLabel" layoutX="101.0" layoutY="176.0" prefHeight="25.0" prefWidth="51.0" text="账户"
+               textAlignment="CENTER" textFill="#595959">
+            <padding>
+                <Insets left="10.0"/>
+            </padding>
+            <font>
+                <Font size="13.0"/>
+            </font>
+        </Label>
+        <Label fx:id="passwordLabel" layoutX="101.0" layoutY="227.0" prefHeight="25.0" prefWidth="51.0" text="密码"
+               textFill="#595959">
+            <padding>
+                <Insets left="10.0"/>
+            </padding>
+            <font>
+                <Font size="13.0"/>
+            </font>
+        </Label>
+        <Label fx:id="accountEmptyError" layoutX="153.0" layoutY="205.0" prefHeight="15.0" prefWidth="162.0"
+               text=" !   账户不能为空" textFill="RED" visible="false">
+            <padding>
+                <Insets left="10.0"/>
+            </padding>
+        </Label>
+        <Label fx:id="passwordEmptyError" layoutX="153.0" layoutY="251.0" prefHeight="15.0" prefWidth="162.0"
+               text=" !   密码不能为空" textFill="RED" visible="false">
+            <padding>
+                <Insets left="10.0"/>
+            </padding>
+        </Label>
+        <Label fx:id="closeButtonLabel" alignment="CENTER" layoutX="368.0" prefHeight="23.0" prefWidth="25.0" text="X">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Label>
+        <Label fx:id="minButtonLabel" alignment="CENTER" layoutX="343.0" layoutY="2.0" prefHeight="23.0"
+               prefWidth="25.0" text="一">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Label>
+        <Label fx:id="Logo" alignment="CENTER" layoutX="14.0" layoutY="30.0" prefHeight="23.0" prefWidth="61.0"
+               text="Chat" textFill="#4c4c4c">
+            <font>
+                <Font size="19.0"/>
+            </font>
+        </Label>
+        <Button fx:id="closeButton" layoutX="368.0" mnemonicParsing="false" onAction="#Close"
+                onMouseEntered="#hoverCloseButton" onMouseExited="#exitCloseButton" prefHeight="15.0" prefWidth="0.0"
+                style="-fx-background-insets: 0; -fx-opacity: 0;" text="Button"/>
+        <Button fx:id="minimizeButton" layoutX="344.0" mnemonicParsing="false" onAction="#Minimize"
+                onMouseEntered="#hoverMinimizeButton" onMouseExited="#exitMinimizeButton" prefHeight="15.0"
+                prefWidth="0.0" style="-fx-background-insets: 0; -fx-opacity: 0;" text="Button"/>
+        <Label fx:id="minButtonLabelHover" layoutX="343.0" prefHeight="23.0" prefWidth="25.0"
+               style="-fx-background-color: black; -fx-opacity: 0.1;" visible="false"/>
+        <Label fx:id="closeButtonLabelHover" layoutX="368.0" prefHeight="23.0" prefWidth="25.0"
+               style="-fx-background-color: black; -fx-opacity: 0.1;" visible="false"/>
+        <ImageView fx:id="avatar" fitHeight="100.0" fitWidth="100.0" layoutX="101.0" layoutY="56.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@../../../images/image.jpg"/>
+            </image>
+        </ImageView>
+        <Button fx:id="selectAvatar" layoutX="202.0" layoutY="132.0" mnemonicParsing="false" onAction="#Close"
+                onMouseEntered="#hoverselectAvatarButton" onMouseExited="#exitselectAvatarButton" prefHeight="23.0"
+                prefWidth="62.0" style="-fx-background-insets: 0; -fx-opacity: 0;" text="Button"/>
+        <Label fx:id="selectAvatarHover" layoutX="202.0" layoutY="132.0" prefHeight="23.0" prefWidth="62.0"
+               style="-fx-background-color: black; -fx-opacity: 0.1;" visible="false"/>
+        <Label fx:id="selectAvatarLabel" alignment="CENTER" layoutX="202.0" layoutY="132.0" prefHeight="23.0"
+               prefWidth="62.0" text="选择图片"/>
+        <PasswordField fx:id="passwordAgain" layoutX="151.0" layoutY="274.0"/>
+        <Label fx:id="passwordAgainLabel" layoutX="79.0" layoutY="273.0" prefHeight="26.0" prefWidth="71.0"
+               text="重复密码" textFill="#595959">
+            <padding>
+                <Insets left="10.0"/>
+            </padding>
+            <font>
+                <Font size="13.0"/>
+            </font>
+        </Label>
+        <Label fx:id="passwordAgainError" layoutX="153.0" layoutY="299.0" prefHeight="15.0" prefWidth="162.0"
+               text=" !   两次密码不同" textFill="RED" visible="false">
+            <padding>
+                <Insets left="10.0"/>
+            </padding>
+        </Label>
+        <Label fx:id="returnToLogInLabel" prefHeight="26.0" prefWidth="37.0" text="  &lt;">
+            <font>
+                <Font size="19.0"/>
+            </font>
+        </Label>
+        <Button fx:id="returnToLogInButton" layoutX="-1.0" layoutY="-1.0" mnemonicParsing="false"
+                onAction="#returnToLogIn" onMouseEntered="#hoverToLogInButton" onMouseExited="#exitToLogInButton"
+                prefHeight="26.0" prefWidth="38.0" style="-fx-background-insets: 0; -fx-opacity: 0;" text="Button"/>
+        <Label fx:id="returnToLogInLabelHover" layoutX="1.0" prefHeight="26.0" prefWidth="38.0"
+               style="-fx-background-color: black; -fx-opacity: 0.1;" visible="false"/>
+    </children>
+</AnchorPane>
