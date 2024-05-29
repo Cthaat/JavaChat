@@ -2,9 +2,9 @@
 ### a chat software developed in **JavaFX**
 
 <p align="center">
-  简体中文
+  English
   ｜
-  <a href="#">English</a>
+  <a href="#">简体中文</a>
 </p>
 
 ---
