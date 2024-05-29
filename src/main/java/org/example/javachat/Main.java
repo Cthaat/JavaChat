@@ -19,7 +19,7 @@ public class Main extends Application
     }
 
     @Override
-    public void start(Stage primaryStage) throws IOException
+    public void start(Stage primaryStage)
     {
         Main.stage = primaryStage;
         primaryStage.initStyle(StageStyle.UNDECORATED); // 设置窗口样式为无边框

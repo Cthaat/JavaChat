@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
+import static Sql.querySql.isHavaUser;
 import static org.example.javachat.Main.changeView;
 
 public class Login
@@ -102,6 +103,10 @@ public class Login
         {
             passwordEmptyError.setVisible(true);
             return;
+        }
+        if(isHavaUser(accountStr, passwordStr) == -1)
+        {
+            passwordOrAccountError.setVisible(true);
         }
     }
 
