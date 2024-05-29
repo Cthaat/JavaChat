@@ -4,7 +4,7 @@
 <p align="center">
   English
   ｜
-  <a href="#">简体中文</a>
+  <a href="https://github.com/Cthaat/JavaChat/blob/master/src/main/resources/README.md">简体中文</a>
 </p>
 
 ---
