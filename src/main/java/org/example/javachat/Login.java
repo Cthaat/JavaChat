@@ -8,6 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -69,6 +72,9 @@ public class Login
     // 最小化按钮的覆盖装饰
     @FXML
     private Label closeButtonLabelHover;
+    // 登录成功标签
+    @FXML
+    private Label logupSuccessLabel;
 
 
     // 初始化
@@ -94,6 +100,7 @@ public class Login
         String passwordStr = password.getText();
         accountEmptyError.setVisible(false);
         passwordEmptyError.setVisible(false);
+        passwordOrAccountError.setVisible(false);
         if (FXUtil.isEmpty(accountStr))
         {
             accountEmptyError.setVisible(true);
@@ -104,9 +111,21 @@ public class Login
             passwordEmptyError.setVisible(true);
             return;
         }
-        if(isHavaUser(accountStr, passwordStr) == -1)
+        System.out.println(isHavaUser(accountStr, passwordStr));
+        if(!isHavaUser(accountStr, passwordStr))
         {
             passwordOrAccountError.setVisible(true);
+        }else {
+            logupSuccessLabel.setVisible(true);
+        }
+    }
+
+    @FXML
+    public void loginButtonAction(KeyEvent event)
+    {
+        if (event.getCode() == KeyCode.ENTER)
+        {
+            doLogin();
         }
     }
 

@@ -6,73 +6,97 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="mainPane" onMouseDragged="#dragWindow" onMousePressed="#settleUponWindow" onMouseReleased="#setWindow" prefHeight="380.0" prefWidth="386.0" style="-fx-border-radius: 150px; -fx-background-color: linear-gradient(to bottom right, rgb(114, 135, 254), rgb(130, 88, 186));" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javachat.Login">
+<AnchorPane fx:id="mainPane" onMouseDragged="#dragWindow" onMousePressed="#settleUponWindow"
+            onMouseReleased="#setWindow" prefHeight="380.0" prefWidth="386.0"
+            style="-fx-border-radius: 150px; -fx-background-color: linear-gradient(to bottom right, rgb(114, 135, 254), rgb(130, 88, 186));"
+            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.javachat.Login">
     <children>
-        <TextField fx:id="account" layoutX="117.0" layoutY="202.0" />
-        <PasswordField fx:id="password" layoutX="117.0" layoutY="253.0" />
-        <Button fx:id="loginButton" layoutX="137.0" layoutY="310.0" mnemonicParsing="false" onAction="#doLogin" prefHeight="23.0" prefWidth="106.0" style="-fx-background-color: skyblue; -fx-background-radius: 50px;" text="登录" textFill="#575757">
+        <TextField fx:id="account" layoutX="117.0" layoutY="202.0" onKeyPressed="#loginButtonAction"/>
+        <PasswordField fx:id="password" layoutX="117.0" layoutY="253.0" onKeyPressed="#loginButtonAction"/>
+        <Button fx:id="loginButton" layoutX="137.0" layoutY="310.0" mnemonicParsing="false" onAction="#doLogin"
+                prefHeight="23.0" prefWidth="106.0" style="-fx-background-color: skyblue; -fx-background-radius: 50px;"
+                text="登录" textFill="#575757">
             <font>
-                <Font size="14.0" />
+                <Font size="14.0"/>
             </font>
         </Button>
-        <Label layoutX="65.0" layoutY="201.0" prefHeight="25.0" prefWidth="51.0" text="账户" textAlignment="CENTER" textFill="#595959">
+        <Label layoutX="65.0" layoutY="201.0" prefHeight="25.0" prefWidth="51.0" text="账户" textAlignment="CENTER"
+               textFill="#595959">
             <padding>
-                <Insets left="10.0" />
+                <Insets left="10.0"/>
             </padding>
             <font>
-                <Font size="13.0" />
+                <Font size="13.0"/>
             </font>
         </Label>
         <Label layoutX="65.0" layoutY="252.0" prefHeight="25.0" prefWidth="51.0" text="密码" textFill="#595959">
             <padding>
-                <Insets left="10.0" />
+                <Insets left="10.0"/>
             </padding>
             <font>
-                <Font size="13.0" />
+                <Font size="13.0"/>
             </font>
         </Label>
-        <Label fx:id="logupLabel" layoutX="114.0" layoutY="354.0" prefHeight="23.0" prefWidth="144.0" text="还没有账户？注册一个" textFill="#304988">
+        <Label fx:id="logupLabel" layoutX="114.0" layoutY="354.0" prefHeight="23.0" prefWidth="144.0"
+               text="还没有账户？注册一个" textFill="#304988">
             <padding>
-                <Insets left="10.0" />
+                <Insets left="10.0"/>
             </padding>
         </Label>
-        <Button fx:id="logUpButton" layoutX="114.0" layoutY="354.0" mnemonicParsing="false" onAction="#doLogup" prefHeight="23.0" prefWidth="144.0" style="-fx-background-insets: 0; -fx-opacity: 0;" text="Button" />
-        <Label fx:id="accountEmptyError" layoutX="117.0" layoutY="230.0" prefHeight="15.0" prefWidth="162.0" text=" !   账户不能为空" textFill="RED" visible="false">
+        <Button fx:id="logUpButton" layoutX="114.0" layoutY="354.0" mnemonicParsing="false" onAction="#doLogup"
+                prefHeight="23.0" prefWidth="144.0" style="-fx-background-insets: 0; -fx-opacity: 0;" text="Button"/>
+        <Label fx:id="accountEmptyError" layoutX="117.0" layoutY="230.0" prefHeight="15.0" prefWidth="162.0"
+               text=" !   账户不能为空" textFill="RED" visible="false">
             <padding>
-                <Insets left="10.0" />
+                <Insets left="10.0"/>
             </padding>
         </Label>
-        <Label fx:id="passwordEmptyError" layoutX="117.0" layoutY="278.0" prefHeight="15.0" prefWidth="162.0" text=" !   密码不能为空" textFill="RED" visible="false">
+        <Label fx:id="passwordEmptyError" layoutX="117.0" layoutY="278.0" prefHeight="15.0" prefWidth="162.0"
+               text=" !   密码不能为空" textFill="RED" visible="false">
             <padding>
-                <Insets left="10.0" />
+                <Insets left="10.0"/>
             </padding>
         </Label>
-        <Label fx:id="passwordOrAccountError" layoutX="109.0" layoutY="293.0" prefHeight="15.0" prefWidth="162.0" text="    !   账户/密码 错误" textFill="RED" visible="false">
+        <Label fx:id="passwordOrAccountError" layoutX="109.0" layoutY="293.0" prefHeight="15.0" prefWidth="162.0"
+               text="    !   账户/密码 错误" textFill="RED" visible="false">
             <padding>
-                <Insets left="10.0" />
+                <Insets left="10.0"/>
             </padding>
         </Label>
-        <ImageView fx:id="avatar" fitHeight="100.0" fitWidth="100.0" layoutX="148.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 50px;">
-            <Image url="@../../../images/image.jpg" />
+        <ImageView fx:id="avatar" fitHeight="100.0" fitWidth="100.0" layoutX="148.0" layoutY="76.0" pickOnBounds="true"
+                   preserveRatio="true" style="-fx-background-radius: 50px;">
+            <Image url="@../../../images/image.jpg"/>
         </ImageView>
         <Label fx:id="closeButtonLabel" alignment="CENTER" layoutX="368.0" prefHeight="23.0" prefWidth="25.0" text="X">
             <font>
-                <Font size="16.0" />
+                <Font size="16.0"/>
             </font>
         </Label>
-        <Label fx:id="minButtonLabel" alignment="CENTER" layoutX="343.0" layoutY="2.0" prefHeight="23.0" prefWidth="25.0" text="一">
+        <Label fx:id="minButtonLabel" alignment="CENTER" layoutX="343.0" layoutY="2.0" prefHeight="23.0"
+               prefWidth="25.0" text="一">
             <font>
-                <Font size="16.0" />
+                <Font size="16.0"/>
             </font>
         </Label>
-        <Label alignment="CENTER" layoutX="14.0" layoutY="12.0" prefHeight="23.0" prefWidth="61.0" text="Chat" textFill="#4c4c4c">
+        <Label alignment="CENTER" layoutX="14.0" layoutY="12.0" prefHeight="23.0" prefWidth="61.0" text="Chat"
+               textFill="#4c4c4c">
             <font>
-                <Font size="19.0" />
+                <Font size="19.0"/>
             </font>
         </Label>
-        <Button fx:id="closeButton" layoutX="368.0" mnemonicParsing="false" onAction="#Close" onMouseEntered="#hoverCloseButton" onMouseExited="#exitCloseButton" prefHeight="15.0" prefWidth="0.0" style="-fx-background-insets: 0; -fx-opacity: 0;" text="Button" />
-        <Button fx:id="minimizeButton" layoutX="344.0" mnemonicParsing="false" onAction="#Minimize" onMouseEntered="#hoverMinimizeButton" onMouseExited="#exitMinimizeButton" prefHeight="15.0" prefWidth="0.0" style="-fx-background-insets: 0; -fx-opacity: 0;" text="Button" />
-        <Label fx:id="minButtonLabelHover" layoutX="343.0" prefHeight="23.0" prefWidth="25.0" style="-fx-background-color: black; -fx-opacity: 0.1;" visible="false" />
-        <Label fx:id="closeButtonLabelHover" layoutX="368.0" prefHeight="23.0" prefWidth="25.0" style="-fx-background-color: black; -fx-opacity: 0.1;" visible="false" />
+        <Button fx:id="closeButton" layoutX="368.0" mnemonicParsing="false" onAction="#Close"
+                onMouseEntered="#hoverCloseButton" onMouseExited="#exitCloseButton" prefHeight="15.0" prefWidth="0.0"
+                style="-fx-background-insets: 0; -fx-opacity: 0;" text="Button"/>
+        <Button fx:id="minimizeButton" layoutX="344.0" mnemonicParsing="false" onAction="#Minimize"
+                onMouseEntered="#hoverMinimizeButton" onMouseExited="#exitMinimizeButton" prefHeight="15.0"
+                prefWidth="0.0" style="-fx-background-insets: 0; -fx-opacity: 0;" text="Button"/>
+        <Label fx:id="minButtonLabelHover" layoutX="343.0" prefHeight="23.0" prefWidth="25.0"
+               style="-fx-background-color: black; -fx-opacity: 0.1;" visible="false"/>
+        <Label fx:id="closeButtonLabelHover" layoutX="368.0" prefHeight="23.0" prefWidth="25.0"
+               style="-fx-background-color: black; -fx-opacity: 0.1;" visible="false"/>
+        <Label fx:id="logupSuccessLabel" visible="false" text="登录成功" layoutX="133.0" layoutY="278.0"
+               prefHeight="26.0"
+               prefWidth="117.0"/>
     </children>
 </AnchorPane>
