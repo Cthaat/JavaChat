@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javachat.Chat">
+   <children>
+      <ScrollPane prefHeight="272.0" prefWidth="522.0">
+         <content>
+            <VBox fx:id="chatVBox" prefHeight="269.0" prefWidth="510.0" />
+         </content></ScrollPane>
+   </children>
+</AnchorPane>
