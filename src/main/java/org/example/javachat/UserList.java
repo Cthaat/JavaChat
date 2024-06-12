@@ -3,9 +3,9 @@ package org.example.javachat;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 
-public class Chat
+public class UserList
 {
-    // 聊天框
+    // 用户列表
     @FXML
-    public VBox chatVBox;
+    public VBox userList;
 }

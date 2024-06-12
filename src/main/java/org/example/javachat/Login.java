@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
+import static org.example.javachat.Main.addView;
 import static org.example.javachat.Main.changeView;
 
 public class Login

@@ -24,7 +24,7 @@ public class Main extends Application
         Main.stage = primaryStage;
         primaryStage.initStyle(StageStyle.UNDECORATED); // 设置窗口样式为无边框
         changeView("Login.fxml");
-        Client.startClient();
+//        Client.startClient();
         primaryStage.show();
     }
 
@@ -35,6 +35,24 @@ public class Main extends Application
         {
             root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource(viewName)));
             stage.setScene(new Scene(root));
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void addView(String viewName ,Object controller)
+    {
+        Parent root;
+        Stage newStage = new Stage();
+        try
+        {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(Main.class.getResource(viewName)));
+            loader.setControllerFactory(param -> controller);
+            root = loader.load();
+            newStage.setScene(new Scene(root));
+            newStage.show();
         }
         catch (IOException e)
         {
