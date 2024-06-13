@@ -7,8 +7,11 @@ module org.example.javachat {
     requires java.naming;
     requires org.apache.httpcomponents.httpcore;
     requires org.apache.httpcomponents.httpclient;
+    requires com.fasterxml.jackson.databind;
 
 
     opens org.example.javachat to javafx.fxml;
     exports org.example.javachat;
+    exports HTTP;
+    opens HTTP to javafx.fxml;
 }
