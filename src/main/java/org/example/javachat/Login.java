@@ -1,5 +1,7 @@
 package org.example.javachat;
 
+import HTTP.logInServletReq;
+import HTTP.logInServletReqImp;
 import Util.FXUtil;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -15,11 +17,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.example.javachat.Main.addView;
 import static org.example.javachat.Main.changeView;
 
 public class Login
 {
+    public static Map<String, Object> userMap = new HashMap<>();
+
     // 主界面
     @FXML
     private AnchorPane mainPane;
@@ -110,6 +117,12 @@ public class Login
         {
             passwordEmptyError.setVisible(true);
             return;
+        }
+        logInServletReqImp loginServlet = new logInServletReq();
+        if (loginServlet.logIn(accountStr, passwordStr))
+        {
+            System.out.println("Login success");
+            System.out.println(userMap);
         }
     }
 

@@ -9,15 +9,21 @@
       <option name="ignoredModules">
         <list>
           <option value="JavaChat" />
+          <option value="JavaChat" />
+          <option value="JavaChat" />
         </list>
       </option>
       <option name="ignoredPackages">
         <list>
           <option value="commons-codec:commons-codec:1.11" />
+          <option value="com.fasterxml.woodstox:woodstox-core:6.2.3" />
+          <option value="com.fasterxml.jackson.core:jackson-databind:2.12.1" />
         </list>
       </option>
       <option name="ignoredReasons">
         <list>
+          <option value="不可利用" />
+          <option value="不可利用" />
           <option value="不可利用" />
         </list>
       </option>
