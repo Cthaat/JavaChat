@@ -1,10 +1,14 @@
 package org.example.javachat;
 
+import HTTP.delFriend;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.StageStyle;
 import org.apache.http.cookie.Cookie;
@@ -17,11 +21,11 @@ import static HTTP.logInServletReq.cookieStore;
 
 public class UserList
 {
-    List<Map<String, Object>> list = new ArrayList<>();
+    List<Map<String, Object>> list;
 
     // 用户列表
     @FXML
-    public VBox userList;
+    public VBox userListBox;
     // 关闭按钮
     @FXML
     public Button closeButton;
@@ -42,6 +46,44 @@ public class UserList
         List<Cookie> userList = cookieStore.getCookies();
         userList.get(1).getValue();
         Name.setText(userList.get(1).getValue());
+        if (!list.isEmpty())
+        {
+            for (Map<String, Object> map : list)
+            {
+                HBox hBox = new HBox();
+                Label label = new Label(map.get("friend_name").toString());
+                Button deleteButton = new Button("删除");
+                Button chatButton = new Button("聊天");
+                deleteButton.setOnAction(event ->{
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("提示");
+                    alert.setHeaderText("确认删除?");
+                    alert.setContentText("删除后将无法恢复，请确认是否删除?");
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.get() == ButtonType.OK)
+                    {
+                        delFriend delFriend = new delFriend();
+                        if (delFriend.delFriendByName(map.get("friend_name").toString()))
+                        {
+                            list.remove(map);
+                            userListBox.getChildren().remove(hBox);
+                        }
+                        else
+                        {
+                            Alert alert1 = new Alert(Alert.AlertType.ERROR);
+                            alert1.setTitle("错误");
+                            alert1.setHeaderText("删除失败");
+                            alert1.setContentText("请检查网络连接或联系管理员");
+                            alert1.showAndWait();
+                        }
+                    }
+                });
+                chatButton.setOnAction(event ->{
+                    Chat chat = new Chat(map.get("friend_name").toString());
+                    Main.addView("Chat.fxml" , chat);
+                });
+            }
+        }
         Timer timer = new Timer();
         timer.schedule(new TimerTask()
         {

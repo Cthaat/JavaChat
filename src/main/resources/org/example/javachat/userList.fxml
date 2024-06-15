@@ -9,7 +9,7 @@
     <children>
         <ScrollPane layoutY="42.0" prefHeight="379.0" prefWidth="300.0">
             <content>
-                <VBox fx:id="userList" prefHeight="371.0" prefWidth="296.0"/>
+                <VBox fx:id="userListBox" prefHeight="371.0" prefWidth="296.0"/>
             </content>
         </ScrollPane>
         <Button layoutY="3.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="78.0"
