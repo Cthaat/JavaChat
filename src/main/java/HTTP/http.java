@@ -2,6 +2,7 @@ package HTTP;
 
 import javafx.stage.Stage;
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -21,30 +22,14 @@ public class http
     private static final ObjectMapper MAPPER = new ObjectMapper();
     public static void main(String[] args)
     {
-        try (CloseableHttpClient httpclient = HttpClients.createDefault();)
+        try (CloseableHttpClient httpClient = HttpClients.createDefault();)
         {
-            HttpPost post = new HttpPost("http://localhost:8080/hello");
-            post.addHeader("Content-Type", "application/json");
-            post.setEntity(new StringEntity("hello"));
-            //设置请求参数
-            post.setHeader("userName" , "admin");
-            post.setHeader("userID", "10000001");
-            try (CloseableHttpResponse response = httpclient.execute(post))
-            {
-                System.out.println(response.getStatusLine().getStatusCode());
-                HttpEntity entity = response.getEntity();
-                if (entity != null)
-                {
-                    String json = EntityUtils.toString(entity);
-                    System.out.println(json);
-                    ArrayList list = MAPPER.readValue(json, ArrayList.class);
-                    System.out.println(list);
-                }
-            }
+            HttpPost anotherRequest = new HttpPost("http://localhost:8080/Main");
+            HttpResponse anotherResponse = httpClient.execute(anotherRequest);
         }
         catch (IOException e)
         {
-            System.out.println("Error: " + "连接服务器失败");
+            throw new RuntimeException(e);
         }
     }
 }

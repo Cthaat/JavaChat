@@ -25,8 +25,6 @@ import static org.example.javachat.Main.changeView;
 
 public class Login
 {
-    public static Map<String, Object> userMap = new HashMap<>();
-
     // 主界面
     @FXML
     private AnchorPane mainPane;
@@ -122,7 +120,6 @@ public class Login
         if (loginServlet.logIn(accountStr, passwordStr))
         {
             System.out.println("Login success");
-            System.out.println(userMap);
         }
     }
 
