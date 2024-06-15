@@ -54,7 +54,38 @@ public class UserList
                 Label label = new Label(map.get("friend_name").toString());
                 Button deleteButton = new Button("删除");
                 Button chatButton = new Button("聊天");
-                deleteButton.setOnAction(event ->{
+                // 按钮样式
+                deleteButton.setStyle("-fx-text-alignment: center;" +
+                                      "-fx-pref-height: 38px;" +
+                                      "-fx-padding: 0 18px;" +
+                                      "-fx-border-style: none;" +
+                                      "-fx-cursor: pointer;" +
+                                      "-fx-background-color: #009688;" +
+                                      "-fx-text-fill: #fff;" +
+                                      "-fx-border-radius: 2px;" +
+                                      "-fx-background-radius: 2px;" +
+                                      "-fx-font-weight: bold;" +
+                                      "-fx-opacity:0.8;" +
+                                      "-fx-font-size: 12px;"
+                );
+                chatButton.setStyle("-fx-text-alignment: center;" +
+                                    "-fx-pref-height: 38px;" +
+                                    "-fx-padding: 0 18px;" +
+                                    "-fx-border-style: none;" +
+                                    "-fx-cursor: pointer;" +
+                                    "-fx-background-color: #009688;" +
+                                    "-fx-text-fill: #fff;" +
+                                    "-fx-border-radius: 2px;" +
+                                    "-fx-background-radius: 2px;" +
+                                    "-fx-font-weight: bold;" +
+                                    "-fx-opacity:0.8;" +
+                                    "-fx-font-size: 12px;"
+                );
+                label.setStyle("-fx-text-alignment: center;" +
+                               "-fx-pref-height: 38px;" +
+                               "-fx-padding: 0 18px;");
+                deleteButton.setOnAction(event ->
+                {
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("提示");
                     alert.setHeaderText("确认删除?");
@@ -78,10 +109,13 @@ public class UserList
                         }
                     }
                 });
-                chatButton.setOnAction(event ->{
+                chatButton.setOnAction(event ->
+                {
                     Chat chat = new Chat(map.get("friend_name").toString());
                     Main.addView("Chat.fxml" , chat);
                 });
+                hBox.getChildren().addAll(label , deleteButton , chatButton);
+                userListBox.getChildren().add(hBox);
             }
         }
         Timer timer = new Timer();

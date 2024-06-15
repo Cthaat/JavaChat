@@ -30,10 +30,12 @@ public class Main extends Application
 
     public static void changeView(String viewName)
     {
+        // 加载指定视图
         Parent root;
         try
         {
             root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource(viewName)));
+            // 设置场景
             stage.setScene(new Scene(root));
         }
         catch (IOException e)
@@ -44,14 +46,20 @@ public class Main extends Application
 
     public static void addView(String viewName ,Object controller)
     {
+        // 加载指定视图
         Parent root;
+        // 创建新舞台
         Stage newStage = new Stage();
         try
         {
+            // 加载指定视图
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(Main.class.getResource(viewName)));
+            // 设置控制器
             loader.setControllerFactory(param -> controller);
             root = loader.load();
+            // 设置场景
             newStage.setScene(new Scene(root));
+            // 显示新舞台
             newStage.show();
         }
         catch (IOException e)
@@ -62,12 +70,16 @@ public class Main extends Application
 
     public static void changeView(String viewName , Object controller)
     {
+        // 加载指定视图
         Parent root;
         try
         {
+            // 加载指定视图
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(Main.class.getResource(viewName)));
+            // 设置控制器
             loader.setControllerFactory(param -> controller);
             root = loader.load();
+            // 设置场景
             stage.setScene(new Scene(root));
         }
         catch (IOException e)

@@ -4,23 +4,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="383.0" prefWidth="522.0"
-            style="-fx-background-color: linear-gradient(to bottom right, rgb(114, 135, 254), rgb(130, 88, 186));"
-            stylesheets="@CSS/root.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.javachat.Chat">
+<AnchorPane prefHeight="383.0" prefWidth="522.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(114, 135, 254), rgb(130, 88, 186));" stylesheets="@CSS/root.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javachat.Chat">
     <children>
-        <ScrollPane layoutY="28.0" prefHeight="309.0" prefWidth="522.0"
-                    style="-fx-background-color: linear-gradient(to bottom right, rgb(114, 135, 254), rgb(130, 88, 186));">
+        <ScrollPane layoutY="28.0" prefHeight="309.0" prefWidth="522.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(114, 135, 254), rgb(130, 88, 186));">
             <content>
-                <VBox fx:id="chatVBox" prefHeight="307.0" prefWidth="528.0"
-                      style="-fx-background-color: linear-gradient(to bottom right, rgb(114, 135, 254), rgb(130, 88, 186));"/>
+                <VBox fx:id="chatVBox" prefHeight="307.0" prefWidth="528.0" style="-fx-background-color: skyblue;" />
             </content>
         </ScrollPane>
-        <Label fx:id="userName" layoutY="2.0" prefHeight="24.0" prefWidth="182.0"/>
-        <Button layoutX="406.0" layoutY="337.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="116.0"
-                styleClass="btn-basic,green-theme,btn-radius-normal" text="发送">
+        <Label fx:id="userName" layoutY="2.0" prefHeight="24.0" prefWidth="182.0" />
+        <Button layoutX="406.0" layoutY="337.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="116.0" styleClass="btn-basic,green-theme,btn-radius-normal" text="发送">
             <font>
-                <Font size="27.0"/>
+                <Font size="14.0" />
             </font>
         </Button>
     </children>

@@ -20,15 +20,21 @@ public class delFriend implements delFriendImp
     {
         try (CloseableHttpClient httpclient = HttpClients.createDefault();)
         {
+            //创建一个HttpPost对象，指定请求的URL
             HttpPost post2 = new HttpPost("http://localhost:8080/delMyFriend");
+            //设置请求头
             post2.addHeader("Content-Type", "application/json");
+            //设置请求体
             post2.setEntity(new StringEntity("hello"));
+            //创建一个HttpClientContext对象
             HttpClientContext context = HttpClientContext.create();
+            //将cookieStore设置到HttpClientContext中
             context.setCookieStore(cookieStore);
             //设置请求参数
             post2.setHeader("friendName" , friendName);
             try (CloseableHttpResponse response2 = httpclient.execute(post2 , context) ;)
             {
+                //获取响应体
                 BufferedReader in = new BufferedReader(new InputStreamReader(response2.getEntity().getContent()));
                 String inputLine;
                 StringBuilder stringBuffer = new StringBuilder();
@@ -38,6 +44,7 @@ public class delFriend implements delFriendImp
                 }
                 in.close();
                 System.out.println(stringBuffer);
+                //判断响应体是否为success
                 return stringBuffer.toString().equals("success");
             }
             catch (Exception e)

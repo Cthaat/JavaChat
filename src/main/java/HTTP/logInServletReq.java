@@ -28,6 +28,7 @@ public class logInServletReq implements logInServletReqImp
     }
 
     public static final ObjectMapper MAPPER = new ObjectMapper();
+    // 创建一个CookieStore对象
     public static CookieStore cookieStore = new BasicCookieStore();
     @Override
     public boolean logIn(String userName, String password)
@@ -60,8 +61,8 @@ public class logInServletReq implements logInServletReqImp
                     System.out.println("登录成功");
                     try
                     {
-                        getAllfriend call = new getAllfriend();
                         // 异步获取响应结果
+                        getAllfriend call = new getAllfriend();
                         FutureTask<List<Map<String, Object>>> futureTask = new FutureTask<>(call);
                         new Thread(futureTask).start();
                         List<Map<String, Object>> result = futureTask.get();
