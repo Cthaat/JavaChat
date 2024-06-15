@@ -11,6 +11,9 @@
           <option value="JavaChat" />
           <option value="JavaChat" />
           <option value="JavaChat" />
+          <option value="JavaChat" />
+          <option value="JavaChat" />
+          <option value="JavaChat" />
         </list>
       </option>
       <option name="ignoredPackages">
@@ -18,10 +21,16 @@
           <option value="commons-codec:commons-codec:1.11" />
           <option value="com.fasterxml.woodstox:woodstox-core:6.2.3" />
           <option value="com.fasterxml.jackson.core:jackson-databind:2.12.1" />
+          <option value="org.springframework:spring-context:5.2.8.RELEASE" />
+          <option value="org.springframework:spring-beans:5.3.4" />
+          <option value="org.springframework:spring-core:5.3.4" />
         </list>
       </option>
       <option name="ignoredReasons">
         <list>
+          <option value="不可利用" />
+          <option value="不可利用" />
+          <option value="不可利用" />
           <option value="不可利用" />
           <option value="不可利用" />
           <option value="不可利用" />

@@ -12,10 +12,14 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
 public class logInServletReq implements logInServletReqImp
 {
-    private static final ObjectMapper MAPPER = new ObjectMapper();
+    public static final ObjectMapper MAPPER = new ObjectMapper();
     public static CookieStore cookieStore = new BasicCookieStore();
     @Override
     public boolean logIn(String userName, String password)
@@ -45,6 +49,20 @@ public class logInServletReq implements logInServletReqImp
             {
                 if (!cookieStore.getCookies().isEmpty())
                 {
+                    System.out.println("登录成功");
+                    try
+                    {
+                        getAllfriend call = new getAllfriend();
+                        // 异步获取响应结果
+                        FutureTask<List<Map<String, Object>>> futureTask = new FutureTask<>(call);
+                        new Thread(futureTask).start();
+                        List<Map<String, Object>> result = futureTask.get();
+                        System.out.println(result);
+                    }
+                    catch (InterruptedException | ExecutionException e)
+                    {
+                        throw new RuntimeException(e);
+                    }
                     // 输出Cookie信息
                     for (Cookie cookie : cookieStore.getCookies())
                     {

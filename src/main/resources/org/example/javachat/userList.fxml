@@ -4,21 +4,25 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="442.0" prefWidth="300.0" stylesheets="@CSS/root.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javachat.UserList">
+<AnchorPane prefHeight="442.0" prefWidth="300.0" stylesheets="@CSS/root.css" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javachat.UserList">
     <children>
         <ScrollPane layoutY="42.0" prefHeight="379.0" prefWidth="300.0">
             <content>
-                <VBox fx:id="userList" prefHeight="371.0" prefWidth="296.0" />
+                <VBox fx:id="userList" prefHeight="371.0" prefWidth="296.0"/>
             </content>
         </ScrollPane>
-        <Button layoutY="3.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="78.0" styleClass="btn-basic,green-theme,btn-radius-normal" text="加好友">
+        <Button layoutY="3.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="78.0"
+                styleClass="btn-basic,green-theme,btn-radius-normal" text="加好友">
             <font>
-                <Font size="13.0" />
+                <Font size="13.0"/>
             </font>
         </Button>
-        <Button layoutY="421.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="102.0" styleClass="btn-basic,green-theme,btn-radius-normal" text="公共聊天" />
-        <Button fx:id="closeButton" layoutX="222.0" layoutY="421.0" mnemonicParsing="false" onAction="#Close" prefHeight="31.0" prefWidth="77.0" styleClass="btn-basic,green-theme,btn-radius-normal" text="关闭" />
-        <Label fx:id="Name" layoutX="79.0" layoutY="6.0" prefHeight="30.0" prefWidth="62.0" />
-        <Label fx:id="dataTime" layoutX="154.0" layoutY="6.0" prefHeight="30.0" prefWidth="147.0" />
+        <Button layoutY="421.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="102.0"
+                styleClass="btn-basic,green-theme,btn-radius-normal" text="公共聊天"/>
+        <Button fx:id="closeButton" layoutX="222.0" layoutY="421.0" mnemonicParsing="false" onAction="#Close"
+                prefHeight="31.0" prefWidth="77.0" styleClass="btn-basic,green-theme,btn-radius-normal" text="关闭"/>
+        <Label fx:id="Name" layoutX="79.0" layoutY="6.0" prefHeight="30.0" prefWidth="62.0"/>
+        <Label fx:id="dataTime" layoutX="154.0" layoutY="6.0" prefHeight="30.0" prefWidth="147.0"/>
     </children>
 </AnchorPane>
