@@ -14,10 +14,15 @@ public class signUpApp extends Application
     @Override
     public void start(Stage primaryStage) throws IOException
     {
-        primaryStage.initStyle(StageStyle.UNDECORATED); // 设置窗口样式为无边框
+        // 设置窗口样式为无边框
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+        // 通过FXMLLoader加载signUp.fxml文件
         FXMLLoader fxmlLoader = new FXMLLoader(signUpApp.class.getResource("signUp.fxml"));
+        // 通过FXMLLoader加载signUp.fxml文件，获取场景
         Scene scene = new Scene(fxmlLoader.load());
+        // 设置场景
         primaryStage.setScene(scene);
+        // 显示窗口
         primaryStage.show();
     }
 }
