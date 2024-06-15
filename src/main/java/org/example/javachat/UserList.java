@@ -11,15 +11,14 @@ import org.apache.http.cookie.Cookie;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 import static HTTP.logInServletReq.cookieStore;
 
 public class UserList
 {
+    List<Map<String, Object>> list = new ArrayList<>();
+
     // 用户列表
     @FXML
     public VBox userList;
@@ -32,6 +31,11 @@ public class UserList
     // 时间
     @FXML
     public Label dataTime;
+
+    public UserList(List<Map<String, Object>> list)
+    {
+        this.list = list;
+    }
 
     public void initialize()
     {

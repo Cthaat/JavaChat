@@ -10,6 +10,8 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.example.javachat.Main;
+import org.example.javachat.UserList;
 
 import java.io.IOException;
 import java.util.List;
@@ -19,6 +21,10 @@ import java.util.concurrent.FutureTask;
 
 public class logInServletReq implements logInServletReqImp
 {
+    public logInServletReq()
+    {
+    }
+
     public static final ObjectMapper MAPPER = new ObjectMapper();
     public static CookieStore cookieStore = new BasicCookieStore();
     @Override
@@ -57,7 +63,8 @@ public class logInServletReq implements logInServletReqImp
                         FutureTask<List<Map<String, Object>>> futureTask = new FutureTask<>(call);
                         new Thread(futureTask).start();
                         List<Map<String, Object>> result = futureTask.get();
-                        System.out.println(result);
+                        UserList userList = new UserList(result);
+                        Main.changeView("userList.fxml" , userList);
                     }
                     catch (InterruptedException | ExecutionException e)
                     {

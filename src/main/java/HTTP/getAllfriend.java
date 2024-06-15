@@ -15,23 +15,23 @@ import java.util.concurrent.Callable;
 import static HTTP.logInServletReq.MAPPER;
 import static HTTP.logInServletReq.cookieStore;
 
-public class getAllfriend implements getAllFriendsImp , Callable
+public class getAllfriend implements getAllFriendsImp, Callable
 {
 
     @Override
     public List<Map<String, Object>> getAllFriends()
     {
-        try (CloseableHttpClient httpclient = HttpClients.createDefault();)
+        try (CloseableHttpClient httpclient = HttpClients.createDefault() ;)
         {
             HttpPost post = new HttpPost("http://localhost:8080/loadAllFriendMessage");
-            post.addHeader("Content-Type", "application/json");
+            post.addHeader("Content-Type" , "application/json");
             HttpClientContext context = HttpClientContext.create();
             context.setCookieStore(cookieStore);
-            try (CloseableHttpResponse response = httpclient.execute(post , context);)
+            try (CloseableHttpResponse response = httpclient.execute(post , context) ;)
             {
                 // 获取全部响应信息
                 String responseString = EntityUtils.toString(response.getEntity());
-                return MAPPER.readValue(responseString, List.class);
+                return MAPPER.readValue(responseString , List.class);
             }
             catch (IOException e)
             {

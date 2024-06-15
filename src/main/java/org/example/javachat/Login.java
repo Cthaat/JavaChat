@@ -116,11 +116,10 @@ public class Login
             passwordEmptyError.setVisible(true);
             return;
         }
-        logInServletReqImp loginServlet = new logInServletReq();
+        logInServletReq loginServlet = new logInServletReq();
         if (loginServlet.logIn(accountStr, passwordStr))
         {
             System.out.println("Login success");
-            changeView("userList.fxml");
         }
         else
         {
