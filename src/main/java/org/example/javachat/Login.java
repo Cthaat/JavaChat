@@ -120,6 +120,11 @@ public class Login
         if (loginServlet.logIn(accountStr, passwordStr))
         {
             System.out.println("Login success");
+            changeView("userList.fxml");
+        }
+        else
+        {
+            passwordOrAccountError.setVisible(true);
         }
     }
 

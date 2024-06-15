@@ -59,4 +59,20 @@ public class Main extends Application
             throw new RuntimeException(e);
         }
     }
+
+    public static void changeView(String viewName , Object controller)
+    {
+        Parent root;
+        try
+        {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(Main.class.getResource(viewName)));
+            loader.setControllerFactory(param -> controller);
+            root = loader.load();
+            stage.setScene(new Scene(root));
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
 }
