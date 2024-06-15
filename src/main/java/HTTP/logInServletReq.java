@@ -65,6 +65,7 @@ public class logInServletReq implements logInServletReqImp
                         List<Map<String, Object>> result = futureTask.get();
                         UserList userList = new UserList(result);
                         Main.changeView("userList.fxml" , userList);
+                        System.out.println(result);
                     }
                     catch (InterruptedException | ExecutionException e)
                     {
