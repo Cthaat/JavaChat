@@ -12,7 +12,8 @@
                 <VBox fx:id="userListBox" prefHeight="371.0" prefWidth="296.0"/>
             </content>
         </ScrollPane>
-        <Button fx:id="addFriendButton" onAction="#addFriend" layoutX="221.0" layoutY="467.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="78.0"
+        <Button fx:id="addFriendButton" onAction="#addFriend" layoutX="221.0" layoutY="467.0" mnemonicParsing="false"
+                prefHeight="24.0" prefWidth="78.0"
                 styleClass="btn-basic,green-theme,btn-radius-normal" text="加好友">
             <font>
                 <Font size="13.0"/>

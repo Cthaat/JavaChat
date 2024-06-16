@@ -3,6 +3,7 @@ package org.example.javachat;
 import HTTP.addFriend;
 import HTTP.delFriend;
 import HTTP.getAllfriend;
+import HTTP.getP2pMessages;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -132,8 +133,20 @@ deleteButton.setOnAction(event ->
                 //给chatButton添加一个事件监听，当chatButton被点击时，执行下面的代码
                 chatButton.setOnAction(event ->
                 {
+                    getP2pMessages call = new getP2pMessages(map.get("friend_name").toString());
+                    FutureTask<List<Map<String, Object>>> futureTask = new FutureTask<>(call);
+                    new Thread(futureTask).start();
+
                     //创建一个新的Chat对象，传入好友的名称
-                    Chat chat = new Chat(map.get("friend_name").toString());
+                    Chat chat = null;
+                    try
+                    {
+                        chat = new Chat(map.get("friend_name").toString() , futureTask.get());
+                    }
+                    catch (InterruptedException | ExecutionException e)
+                    {
+                        throw new RuntimeException(e);
+                    }
                     //调用Main类的addView方法，加载Chat.fxml页面，并传入chat对象
                     Main.addView("Chat.fxml" , chat);
                 });
