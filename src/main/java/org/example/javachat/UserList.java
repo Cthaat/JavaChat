@@ -136,12 +136,11 @@ deleteButton.setOnAction(event ->
                     getP2pMessages call = new getP2pMessages(map.get("friend_name").toString());
                     FutureTask<List<Map<String, Object>>> futureTask = new FutureTask<>(call);
                     new Thread(futureTask).start();
-
                     //创建一个新的Chat对象，传入好友的名称
                     Chat chat = null;
                     try
                     {
-                        chat = new Chat(map.get("friend_name").toString() , futureTask.get());
+                        chat = new Chat(map.get("friend_name").toString() , futureTask.get() , userList.get(1).getValue());
                     }
                     catch (InterruptedException | ExecutionException e)
                     {
