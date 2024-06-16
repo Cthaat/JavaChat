@@ -1,23 +1,26 @@
 package org.example.javachat;
 
+import HTTP.addFriend;
 import HTTP.delFriend;
+import HTTP.getAllfriend;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.apache.http.cookie.Cookie;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
 import static HTTP.logInServletReq.cookieStore;
 
 public class UserList
 {
+
     List<Map<String, Object>> list;
 
     // 用户列表
@@ -32,6 +35,12 @@ public class UserList
     // 时间
     @FXML
     public Label dataTime;
+    // 添加好友文本框
+    @FXML
+    public TextField addFriendText;
+    // 添加好友按钮
+    @FXML
+    public Button addFriendButton;
 
     public UserList(List<Map<String, Object>> list)
     {
@@ -153,5 +162,67 @@ deleteButton.setOnAction(event ->
     {
         System.out.println("Close");
         System.exit(0);
+    }
+
+    @FXML
+    public void addFriend()
+    {
+        // 获取输入的好友名称
+        String friendName = addFriendText.getText();
+        addFriend addFriend = new addFriend();
+        if (isFriend(friendName))
+        {
+            // 好友已存在，弹出错误提示框
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("错误");
+            alert.setHeaderText("添加失败");
+            alert.setContentText("好友已存在");
+            alert.showAndWait();
+            return;
+        }
+        if (addFriend.addFriendByName(friendName))
+        {
+            try
+            {
+                // 异步获取响应结果
+                getAllfriend call = new getAllfriend();
+                FutureTask<List<Map<String, Object>>> futureTask = new FutureTask<>(call);
+                new Thread(futureTask).start();
+                this.list = futureTask.get();
+                // 好友添加成功，刷新页面
+                initialize();
+            }
+            catch (InterruptedException | ExecutionException e)
+            {
+                // 好友添加失败，弹出错误提示框
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("错误");
+                alert.setHeaderText("添加失败");
+                alert.setContentText("用户不存在");
+                alert.showAndWait();
+            }
+        }
+        else
+        {
+            // 好友添加失败，弹出错误提示框
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("错误");
+            alert.setHeaderText("添加失败");
+            alert.setContentText("用户不存在");
+            alert.showAndWait();
+        }
+    }
+
+
+    public boolean isFriend(String friendName)
+    {
+        for (Map<String, Object> map : list)
+        {
+            if (map.get("friend_name").equals(friendName))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
