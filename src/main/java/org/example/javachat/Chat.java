@@ -20,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
@@ -59,10 +60,12 @@ public class Chat
         userName.setText(username);
         for (Map<String, Object> message : messages)
         {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
             HBox messageLabel = new HBox();
             HBox textLabel = new HBox();
             messageLabel.getChildren().add(new Label(message.get("send_user_name") + "  "));
-            messageLabel.getChildren().add(new Label(message.get("date") + "  "));
+            messageLabel.getChildren().add(new Label(simpleDateFormat.format(message.get("date")) + "  "));
             textLabel.getChildren().add(new Label(message.get("text") + "  "));
             /*
             设置样式

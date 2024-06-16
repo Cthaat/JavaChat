@@ -31,17 +31,6 @@ public class logInServletReq implements logInServletReqImp
     @Override
     public boolean logIn(String userName, String password)
     {
-        // 检查Cookie是否存在
-        // 若存在，则直接返回true
-        if (!cookieStore.getCookies().isEmpty())
-        {
-            // 输出Cookie信息
-            for (Cookie cookie : cookieStore.getCookies())
-            {
-                System.out.println(cookie.getName() + " : " + cookie.getValue());
-            }
-            return true;
-        }
         try (CloseableHttpClient httpclient = HttpClients.createDefault() ;)
         {
             HttpPost post = new HttpPost("http://localhost:8080/logoInResp");
