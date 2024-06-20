@@ -100,7 +100,7 @@ public class UserList
                                "-fx-pref-height: 38px;" +
                                "-fx-padding: 0 18px;");
                 // 为删除按钮添加点击事件
-deleteButton.setOnAction(event ->
+                deleteButton.setOnAction(event ->
                 {
                     // 弹出确认删除对话框
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

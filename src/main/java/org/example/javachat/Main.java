@@ -1,5 +1,6 @@
 package org.example.javachat;
 
+import HTTP.chatClient;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,7 +25,6 @@ public class Main extends Application
         Main.stage = primaryStage;
         primaryStage.initStyle(StageStyle.UNDECORATED); // 设置窗口样式为无边框
         changeView("Login.fxml");
-//        Client.startClient();
         primaryStage.show();
     }
 

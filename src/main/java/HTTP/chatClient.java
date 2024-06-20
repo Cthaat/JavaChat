@@ -3,14 +3,34 @@ package HTTP;
 import java.io.*;
 import java.net.Socket;
 
-public class chatClient
+public class chatClient extends Thread
 {
-    public void startClient(String username)
+    public static DataOutputStream dataOutputStream;
+    public static final Socket socket;
+    private String username;
+
+    public chatClient(String username)
     {
-        try (Socket socket = new Socket("172.0.0.1", 10086) ;
-             OutputStream outputStream = socket.getOutputStream() ;
-             DataOutputStream dataOutputStream = new DataOutputStream(outputStream))
+        this.username = username;
+    }
+
+    static
+    {
+        try
         {
+            socket = new Socket("localhost", 10086);
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void run()
+    {
+        try (OutputStream outputStream = socket.getOutputStream() ;)
+        {
+            dataOutputStream = new DataOutputStream(outputStream);
             dataOutputStream.writeUTF(username);
             while (true)
             {

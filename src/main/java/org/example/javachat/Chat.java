@@ -2,6 +2,7 @@ package org.example.javachat;
 
 import HTTP.getAllfriend;
 import HTTP.p2pSendMessages;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.DoubleBinding;
@@ -16,13 +17,14 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.TimeZone;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
+
+import static HTTP.chatClient.dataOutputStream;
+import static HTTP.logInServletReq.MAPPER;
 
 public class Chat
 {
@@ -116,12 +118,17 @@ public class Chat
             FutureTask<Boolean> futureTask = new FutureTask<>(call);
             new Thread(futureTask).start();
             Boolean result = futureTask.get();
+            Map<String, String> response = new HashMap<>();
+            response.put("username" , this.username);
+            response.put("message" , message.toString());
+            String json = MAPPER.writeValueAsString(response);
+            dataOutputStream.writeUTF(json);
             if (!result)
             {
                 messageLabel.getChildren().add(new Label("发送失败"));
             }
         }
-        catch (InterruptedException | ExecutionException e)
+        catch (InterruptedException | ExecutionException | IOException e)
         {
             throw new RuntimeException(e);
         }
@@ -142,5 +149,23 @@ public class Chat
             // 执行登录操作
             sendMessage();
         }
+    }
+
+    public void addMessage(Map<String, String> message)
+    {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+        HBox messageLabel = new HBox();
+        HBox textLabel = new HBox();
+        messageLabel.getChildren().add(new Label(message.get("username") + "  "));
+        messageLabel.getChildren().add(new Label(simpleDateFormat.format(new Date()) + "  "));
+        textLabel.getChildren().add(new Label(message.get("message") + "  "));
+            /*
+            设置好看的样式
+            背景半透明，边框，圆角，字体颜色
+            */
+        messageLabel.setStyle("-fx-background-color: rgba(255, 0.5, 0.5, 0.1); -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 5px; -fx-text-fill: #000000;");
+        textLabel.setStyle("-fx-background-color: rgba(255, 0.5, 0.5, 0.1); -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 5px; -fx-text-fill: #000000; -fx-padding: 5px;");
+        chatVBox.getChildren().addAll(messageLabel , textLabel);
     }
 }

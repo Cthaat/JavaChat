@@ -56,6 +56,7 @@ public class logInServletReq implements logInServletReqImp
                         UserList userList = new UserList(result);
                         Main.changeView("userList.fxml" , userList);
                         System.out.println(result);
+                        new Thread(new chatReceiver()).start();
                     }
                     catch (InterruptedException | ExecutionException e)
                     {
@@ -65,6 +66,10 @@ public class logInServletReq implements logInServletReqImp
                     for (Cookie cookie : cookieStore.getCookies())
                     {
                         System.out.println(cookie.getName() + " : " + cookie.getValue());
+                        if (cookie.getName().equals("username"))
+                        {
+                            new Thread(new chatClient(userName)).start();
+                        }
                     }
                     return true;
                 }
