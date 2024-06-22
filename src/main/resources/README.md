@@ -37,4 +37,4 @@ Java Chat 这是我大一下半学期的期末大作业，界面采用比起swin
 
  - 聊天房间 <br/>
 
- ![聊天房间](
+ ![聊天房间](https://github.com/Cthaat/JavaChat/blob/master/src/main/resources/runTimePic/chatRoom.png)
