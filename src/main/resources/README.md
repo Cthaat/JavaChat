@@ -37,7 +37,7 @@ Java Chat 这是我大一下半学期的期末大作业，界面采用比起swin
 
  - 聊天房间 <br/>
 
- ![聊天房间](https://github.com/Cthaat/JavaChat/blob/master/src/main/resources/runTimePic/chatRoom.png)
+ ![聊天房间](https://github.com/Cthaat/JavaChat/blob/master/src/main/resources/runTimePic/chatRoomP.png)
 
 > UI设计的比较丑陋，后续会优化
 > 如有建议欢迎提出issue
@@ -117,11 +117,56 @@ Java Chat 这是我大一下半学期的期末大作业，界面采用比起swin
  - 配置信息都在`src/main/resources`资源文件夹下
  - 启动客户端，连接服务器
 
+---
+
+## 客户端部署
+
+ - 下载客户端代码
+ - 下载Java环境
+ - 注意JavaFx需要单独下载
+ - 运行
 
 
+--- 
 
+## 使用到的技术
 
+ - Java
+   - JavaFX
+   - JDK 21
+ - SQL
+   - Mysql
+   - Redis
+   - JDBC
+ - 数据库连接池
+   - Druid
+ - 图形界面
+   - SceneBuilder
+   - CSS
+   - FXML
+ - 网络通信
+   - Socket
+   - JSON
+   - HTTP
+ - 包管理
+   - Maven
+   - Spring
+ - 其他
+   - Jackson
+   - Jedis
+   - Lombok
+   - Log4j
+   - JUnit
+---
 
+ 玩得愉快😘 <br/>
+ 希望大家能喜欢这个项目 <br/>
+ 也希望大家多提意见，共同进步 <br/>
+ 最后，感谢大家的支持！🤗
+
+---
+
+Powered by [Cthaat](https://github.com/Cthaat)
 
 
 
