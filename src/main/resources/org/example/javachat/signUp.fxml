@@ -117,5 +117,12 @@
                 prefHeight="26.0" prefWidth="38.0" style="-fx-background-insets: 0; -fx-opacity: 0;" text="Button"/>
         <Label fx:id="returnToLogInLabelHover" layoutX="1.0" prefHeight="26.0" prefWidth="38.0"
                style="-fx-background-color: black; -fx-opacity: 0.1;" visible="false"/>
+        <Button fx:id="aboutButton" layoutX="281.0" layoutY="-1.0" mnemonicParsing="false" onAction="#showAbout"
+                prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: skyblue; -fx-background-radius: 50px;"
+                text="关于" textFill="#575757">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Button>
     </children>
 </AnchorPane>

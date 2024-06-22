@@ -19,9 +19,18 @@ import java.util.concurrent.FutureTask;
 
 import static HTTP.logInServletReq.cookieStore;
 
+
+/**
+ * @Auther: Edge
+ * @Date: 2024/6/22 13:50
+ * @Description: TODO
+ * @version: 1.0
+ **/
+
+
 public class UserList
 {
-
+    // 好友列表
     List<Map<String, Object>> list;
 
     // 用户列表
@@ -45,11 +54,30 @@ public class UserList
 
     public UserList(List<Map<String, Object>> list)
     {
+
+        /**
+         * @description: 初始化好友列表
+         * @param:
+         * @param list
+         * @return:
+         * @author Edge
+         * @date: 2024/6/22 13:50
+         **/
+
         this.list = list;
     }
 
     public void initialize()
     {
+
+        /**
+         * @description: 初始化好友列表
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:51
+         **/
+
         // 获取cookie中的用户信息
         List<Cookie> userList = cookieStore.getCookies();
         // 设置用户名
@@ -155,14 +183,20 @@ public class UserList
                 userListBox.getChildren().add(hBox);
             }
         }
+        // 创建一个Timer对象
         Timer timer = new Timer();
+// 使用Timer对象的schedule方法，创建一个定时任务
         timer.schedule(new TimerTask()
         {
+            // 重写run方法，当定时任务执行时，会调用这个方法
             public void run()
             {
+                // 使用Platform.runLater方法，在事件队列中执行一个Runnable任务
                 Platform.runLater(() ->
                 {
+                    // 创建一个SimpleDateFormat对象，用于格式化日期
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    // 将格式化后的日期，设置为dataTime的文本
                     dataTime.setText(simpleDateFormat.format(new Date()));
                 });
             }
@@ -170,15 +204,36 @@ public class UserList
     }
 
     @FXML
+    // 关闭函数
     public void Close()
     {
+
+        /**
+         * @description: 关闭函数
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:51
+         **/
+
+        // 打印出关闭信息
         System.out.println("Close");
+        // 退出程序
         System.exit(0);
     }
 
     @FXML
     public void addFriend()
     {
+
+        /**
+         * @description: 添加好友函数
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:51
+         **/
+
         // 获取输入的好友名称
         String friendName = addFriendText.getText();
         addFriend addFriend = new addFriend();
@@ -226,15 +281,30 @@ public class UserList
     }
 
 
+    // 判断friendName是否是好友列表中的好友
     public boolean isFriend(String friendName)
     {
+
+        /**
+         * @description: 判断friendName是否是好友列表中的好友
+         * @param:
+         * @param friendName 好友名称
+         * @return: boolean
+         * @author Edge
+         * @date: 2024/6/22 13:51
+         **/
+
+        // 遍历好友列表
         for (Map<String, Object> map : list)
         {
+            // 如果friendName与map中的friend_name相等
             if (map.get("friend_name").equals(friendName))
             {
+                // 返回true
                 return true;
             }
         }
+        // 否则返回false
         return false;
     }
 }

@@ -1,12 +1,9 @@
 package org.example.javachat;
 
-import HTTP.getAllfriend;
 import HTTP.p2pSendMessages;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.DoubleBinding;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -26,6 +23,12 @@ import java.util.concurrent.FutureTask;
 import static HTTP.chatClient.dataOutputStream;
 import static HTTP.logInServletReq.MAPPER;
 
+/**
+ * @author Edge
+ * @version 1.0
+ * @description: This class is the controller of the chat window. It handles the communication between the client and the server.
+ * @date 2024/6/22 13:14
+ */
 public class Chat
 {
     private final String username;
@@ -51,6 +54,16 @@ public class Chat
 
     public Chat(String username , List<Map<String, Object>> messages , String chatName)
     {
+        /**
+         * @description: 构造函数
+         * @param:
+         * @param username
+         * @param messages
+         * @param chatName
+         * @return:
+         * @author Edge
+         * @date: 2024/6/22 13:15
+         */
         this.username = username;
         this.messages = messages;
         this.chatName = chatName;
@@ -59,6 +72,13 @@ public class Chat
     @FXML
     public void initialize()
     {
+        /**
+         * @description: 初始化函数
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:15
+         */
         userName.setText(username);
         for (Map<String, Object> message : messages)
         {
@@ -78,7 +98,7 @@ public class Chat
             chatVBox.getChildren().addAll(messageLabel , textLabel);
         }
         // 让VBox在打开时自动滚动到底部
-        DoubleBinding height = Bindings.createDoubleBinding(() -> chatVBox.getHeight(), chatVBox.heightProperty());
+        DoubleBinding height = Bindings.createDoubleBinding(() -> chatVBox.getHeight() , chatVBox.heightProperty());
         chatScrollPane.vvalueProperty().bind(height);
         Platform.runLater(() -> messageTextField.requestFocus());
     }
@@ -86,11 +106,19 @@ public class Chat
     @FXML
     public void sendMessage()
     {
+        /**
+         * @description:
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:15
+         */
         String message = messageTextField.getText();
         // 如果聊天框为空，则不发送消息 , 并提醒用户
         if (message.isEmpty())
         {
-            Platform.runLater(() -> {
+            Platform.runLater(() ->
+            {
                 messageTextField.clear();
                 messageTextField.setPromptText("消息不能为空");
             });
@@ -131,10 +159,9 @@ public class Chat
         catch (InterruptedException | ExecutionException | IOException e)
         {
             throw new RuntimeException(e);
-        }
-        finally
+        } finally
         {
-            DoubleBinding height = Bindings.createDoubleBinding(() -> chatVBox.getHeight(), chatVBox.heightProperty());
+            DoubleBinding height = Bindings.createDoubleBinding(() -> chatVBox.getHeight() , chatVBox.heightProperty());
             chatScrollPane.vvalueProperty().bind(height);
             messageTextField.clear();
         }
@@ -143,6 +170,14 @@ public class Chat
     @FXML
     public void sendButtonAction(KeyEvent event)
     {
+        /**
+         * @description: 发送按钮事件
+         * @param:
+         * @param event
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:15
+         */
         // 当按下回车键时触发
         if (event.getCode() == KeyCode.ENTER)
         {
@@ -153,6 +188,14 @@ public class Chat
 
     public void addMessage(Map<String, String> message)
     {
+        /**
+         * @description: 添加消息到聊天框
+         * @param:
+         * @param message
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:28
+         */
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
         HBox messageLabel = new HBox();

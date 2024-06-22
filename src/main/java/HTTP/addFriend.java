@@ -13,17 +13,32 @@ import java.io.InputStreamReader;
 
 import static HTTP.logInServletReq.cookieStore;
 
+/**
+ * @Auther: Edge
+ * @Date: 2024/6/22 13:38
+ * @Description: TODO
+ * @version: 1.0
+ */
+
 public class addFriend implements addFriendImp
 {
     @Override
     public boolean addFriendByName(String friendName)
     {
+        /**
+         * @description: 向服务器发送添加好友请求
+         * @param:
+         * @param friendName 好友的用户名
+         * @return: boolean
+         * @author Edge
+         * @date: 2024/6/22 13:44
+         **/
         try (CloseableHttpClient httpclient = HttpClients.createDefault() ;)
         {
             //创建一个HttpPost对象，指定请求的URL
             HttpPost post2 = new HttpPost("http://localhost:8080/addMyFriend");
             //设置请求头
-            post2.addHeader("Content-Type", "application/json");
+            post2.addHeader("Content-Type" , "application/json");
             //设置请求体
             post2.setEntity(new StringEntity("hello"));
             //创建一个HttpClientContext对象

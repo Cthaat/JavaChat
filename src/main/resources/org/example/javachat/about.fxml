@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="357.0" prefWidth="403.0"
+            style="-fx-background-color: linear-gradient(to bottom right, rgb(114, 135, 254), rgb(130, 88, 186));"
+            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.javachat.About">
+    <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="20.0" prefHeight="45.0"
+               prefWidth="399.0" text="姓名：杨毅"/>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="74.0" prefHeight="45.0"
+               prefWidth="399.0" text="学号：8008123198"/>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="135.0" prefHeight="45.0"
+               prefWidth="399.0" text="程序名称：Java即时聊天软件"/>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="199.0" prefHeight="45.0"
+               prefWidth="399.0" text="版本：1.0.0"/>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="264.0" prefHeight="45.0"
+               prefWidth="399.0" text="班级：2307"/>
+    </children>
+</AnchorPane>

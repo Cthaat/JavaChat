@@ -9,11 +9,29 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 
+/**
+ * @Auther: Edge
+ * @Date: 2024/6/22 13:50
+ * @Description: TODO
+ * @version: 1.0
+ **/
+
+
 public class signUpApp extends Application
 {
     @Override
     public void start(Stage primaryStage) throws IOException
     {
+
+        /**
+         * @description: 启动JavaFX应用程序
+         * @param:
+         * @param primaryStage 主窗口
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:50
+         **/
+
         // 设置窗口样式为无边框
         primaryStage.initStyle(StageStyle.UNDECORATED);
         // 通过FXMLLoader加载signUp.fxml文件

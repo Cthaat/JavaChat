@@ -1,6 +1,7 @@
 package org.example.javachat;
 
 import Util.FXUtil;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,8 +14,20 @@ import javafx.stage.Stage;
 
 import static org.example.javachat.Main.changeView;
 
+
+/**
+ * @Auther: Edge
+ * @Date: 2024/6/22 13:48
+ * @Description: TODO
+ * @version: 1.0
+ **/
+
+
 public class signUp
 {
+    // 关于按钮
+    @FXML
+    public Button aboutButton;
     // 主界面
     @FXML
     private AnchorPane mainPane;
@@ -98,9 +111,18 @@ public class signUp
 
     // 初始化
     // 初始化
-@FXML
+    @FXML
     public void initialize()
     {
+
+        /**
+         * @description: 初始化登录界面
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:48
+         **/
+
         // 使用FXUtil工具类初始化登录界面
         FXUtil.initLogin(mainPane , closeButton , minimizeButton , avatar);
         // 移除选择头像的控件
@@ -122,6 +144,15 @@ public class signUp
     // 返回登录
     public void returnToLogIn()
     {
+
+        /**
+         * @description: 返回登录界面
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:49
+         **/
+
         System.out.println("Login");
         // 切换到登录界面
         changeView("Login.fxml");
@@ -131,6 +162,15 @@ public class signUp
     @FXML
     public void Close()
     {
+
+        /**
+         * @description: 关闭程序
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:49
+         **/
+
         System.out.println("Close");
         // 关闭程序
         System.exit(0);
@@ -140,15 +180,33 @@ public class signUp
     @FXML
     public void Minimize()
     {
+
+        /**
+         * @description: 最小化窗口
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:49
+         **/
+
         System.out.println("Minimize");
         Stage stage = (Stage) minimizeButton.getScene().getWindow();
         stage.setIconified(true);
     }
 
-// 设置鼠标按下时的坐标
+    // 设置鼠标按下时的坐标
     @FXML
     public void settleUponWindow()
     {
+
+        /**
+         * @description: 设置鼠标按下时的坐标
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:49
+         **/
+
         mainPane.setOnMousePressed(event ->
         {
             offsetX = event.getSceneX();
@@ -156,11 +214,20 @@ public class signUp
         });
     }
 
-// 拖动窗口
+    // 拖动窗口
     // 定义一个函数，用于拖动窗口
-@FXML
+    @FXML
     public void dragWindow()
     {
+
+        /**
+         * @description: 拖动窗口
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:49
+         **/
+
         // 获取当前窗口
         Stage stage = (Stage) minimizeButton.getScene().getWindow();
         // 设置鼠标拖动事件
@@ -176,9 +243,18 @@ public class signUp
     }
 
     // 设置窗口
-@FXML
+    @FXML
     public void setWindow()
     {
+
+        /**
+         * @description: 设置窗口
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:49
+         **/
+
         // 获取当前场景的窗口
         Stage stage = (Stage) minimizeButton.getScene().getWindow();
         // 当鼠标释放时，设置窗口的不透明度为1.0
@@ -189,6 +265,15 @@ public class signUp
     @FXML
     public void hoverCloseButton()
     {
+
+        /**
+         * @description: 当鼠标悬停在关闭按钮上时
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:49
+         **/
+
         // 设置鼠标进入事件，显示关闭按钮的鼠标悬停提示
         closeButton.setOnMouseEntered(event -> closeButtonLabelHover.setVisible(true));
     }
@@ -197,6 +282,15 @@ public class signUp
     @FXML
     public void exitCloseButton()
     {
+
+        /**
+         * @description: 当鼠标离开关闭按钮时
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:49
+         **/
+
         // 设置鼠标离开事件，隐藏关闭按钮的鼠标悬停提示
         closeButton.setOnMouseExited(event -> closeButtonLabelHover.setVisible(false));
     }
@@ -205,6 +299,15 @@ public class signUp
     @FXML
     public void hoverMinimizeButton()
     {
+
+        /**
+         * @description: 当鼠标悬停在最小化按钮上时
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:49
+         **/
+
         // 设置鼠标进入事件，显示最小化按钮的鼠标悬停提示
         minimizeButton.setOnMouseEntered(event -> minButtonLabelHover.setVisible(true));
     }
@@ -213,20 +316,47 @@ public class signUp
     @FXML
     public void exitMinimizeButton()
     {
+
+        /**
+         * @description: 当鼠标离开最小化按钮时，设置minButtonLabelHover的可见性为false
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:49
+         **/
+
         minimizeButton.setOnMouseExited(event -> minButtonLabelHover.setVisible(false));
     }
 
-// 当鼠标进入选择头像按钮时，设置selectAvatarHover的可见性为true
+    // 当鼠标进入选择头像按钮时，设置selectAvatarHover的可见性为true
     @FXML
     public void hoverselectAvatarButton()
     {
+
+        /**
+         * @description: 当鼠标进入选择头像按钮时，设置selectAvatarHover的可见性为true
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:49
+         **/
+
         selectAvatar.setOnMouseEntered(event -> selectAvatarHover.setVisible(true));
     }
 
-// 当鼠标离开选择头像按钮时，设置selectAvatarHover的可见性为false
+    // 当鼠标离开选择头像按钮时，设置selectAvatarHover的可见性为false
     @FXML
     public void exitselectAvatarButton()
     {
+
+        /**
+         * @description: 当鼠标离开选择头像按钮时，设置selectAvatarHover的可见性为false
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:50
+         **/
+
         selectAvatar.setOnMouseExited(event -> selectAvatarHover.setVisible(false));
     }
 
@@ -234,6 +364,15 @@ public class signUp
     @FXML
     public void hoverToLogInButton()
     {
+
+        /**
+         * @description: 当鼠标悬停在returnToLogInButton按钮上时，调用hoverToLogInButton方法
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:50
+         **/
+
         // 当鼠标进入returnToLogInButton按钮时，将returnToLogInLabelHover设置为可见
         returnToLogInButton.setOnMouseEntered(event -> returnToLogInLabelHover.setVisible(true));
     }
@@ -242,7 +381,33 @@ public class signUp
     @FXML
     public void exitToLogInButton()
     {
+
+        /**
+         * @description: 当鼠标离开returnToLogInButton按钮时，调用exitToLogInButton方法
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:50
+         **/
+
         // 当鼠标离开returnToLogInButton按钮时，将returnToLogInLabelHover设置为不可见
         returnToLogInButton.setOnMouseExited(event -> returnToLogInLabelHover.setVisible(false));
+    }
+
+    // 关于按钮的事件
+    @FXML
+    public void showAbout()
+    {
+
+        /**
+         * @description: 关于按钮的事件
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:50
+         **/
+
+        System.out.println("About");
+        Main.addView("about.fxml" , "About");
     }
 }

@@ -11,17 +11,47 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.util.Objects;
 
+
+/**
+ * @Auther: Edge
+ * @Date: 2024/6/22 13:48
+ * @Description: TODO
+ * @version: 1.0
+ **/
+
+
 public class Main extends Application
 {
     private static Stage stage;
+
     public static void main(String[] args)
     {
+
+        /**
+         * @description: 启动客户端
+         * @param:
+         * @param args 启动参数
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:48
+         **/
+
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage)
     {
+
+        /**
+         * @description: 初始化客户端界面
+         * @param:
+         * @param primaryStage 客户端窗口
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:48
+         **/
+
         Main.stage = primaryStage;
         primaryStage.initStyle(StageStyle.UNDECORATED); // 设置窗口样式为无边框
         changeView("Login.fxml");
@@ -30,6 +60,16 @@ public class Main extends Application
 
     public static void changeView(String viewName)
     {
+
+        /**
+         * @description: 切换客户端界面
+         * @param:
+         * @param viewName 视图名称
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:48
+         **/
+
         // 加载指定视图
         Parent root;
         try
@@ -44,8 +84,19 @@ public class Main extends Application
         }
     }
 
-    public static void addView(String viewName ,Object controller)
+    public static void addView(String viewName , Object controller)
     {
+
+        /**
+         * @description: 添加新视图
+         * @param:
+         * @param viewName
+         * @param controller 控制器
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:48
+         **/
+
         // 加载指定视图
         Parent root;
         // 创建新舞台
@@ -70,6 +121,17 @@ public class Main extends Application
 
     public static void changeView(String viewName , Object controller)
     {
+
+        /**
+         * @description: 切换客户端界面
+         * @param:
+         * @param viewName
+         * @param controller 控制器
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:48
+         **/
+
         // 加载指定视图
         Parent root;
         try

@@ -14,25 +14,50 @@ import java.util.concurrent.Callable;
 
 import static HTTP.logInServletReq.cookieStore;
 
+/**
+ * @author Edge
+ * @version 1.0
+ * @description: a
+ * @date 2024/6/22 13:02
+ */
 public class p2pSendMessages implements Callable
 {
     private String message;
     private String friendName;
 
+
     public p2pSendMessages(String message , String friendName)
     {
+        /**
+         * @description:
+         * @param:
+         * @param message
+         * @param friendName
+         * @return:
+         * @author Edge
+         * @date: 2024/6/22 13:03
+         */
         this.message = message;
         this.friendName = friendName;
     }
 
     public boolean sendMessages(String message , String friendName)
     {
+        /**
+         * @description:
+         * @param:
+         * @param message
+         * @param friendName
+         * @return: boolean
+         * @author Edge
+         * @date: 2024/6/22 13:03
+         */
         try (CloseableHttpClient httpclient = HttpClients.createDefault() ;)
         {
             //创建一个HttpPost对象，指定请求的URL
             HttpPost post2 = new HttpPost("http://localhost:8080/sendP2pMessages");
             //设置请求头
-            post2.addHeader("Content-Type", "application/json");
+            post2.addHeader("Content-Type" , "application/json");
             //设置请求体
             post2.setEntity(new StringEntity("hello"));
             //创建一个HttpClientContext对象

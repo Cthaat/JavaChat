@@ -17,22 +17,45 @@ import java.util.concurrent.Callable;
 import static HTTP.logInServletReq.MAPPER;
 import static HTTP.logInServletReq.cookieStore;
 
+/**
+ * @Auther: Edge
+ * @Date: 2024/6/22 13:45
+ * @Description: TODO
+ * @version: 1.0
+ **/
 public class getP2pMessages implements Callable
 {
     private String friendName;
+
     public getP2pMessages(String friendName)
     {
+        /**
+         * @description: 构造函数
+         * @param:
+         * @param friendName
+         * @return:
+         * @author Edge
+         * @date: 2024/6/22 13:45
+         **/
         this.friendName = friendName;
     }
 
     public List<Map<String, Object>> getMessages(String friendName)
     {
+        /**
+         * @description: 获取指定好友的私聊消息
+         * @param:
+ * @param friendName 
+         * @return: java.util.List<java.util.Map < java.lang.String , java.lang.Object>>
+         * @author Edge
+         * @date: 2024/6/22 13:45
+         **/
         try (CloseableHttpClient httpclient = HttpClients.createDefault() ;)
         {
             //创建一个HttpPost对象，指定请求的URL
             HttpPost post2 = new HttpPost("http://localhost:8080/getp2pMessages");
             //设置请求头
-            post2.addHeader("Content-Type", "application/json");
+            post2.addHeader("Content-Type" , "application/json");
             //设置请求体
             post2.setEntity(new StringEntity("hello"));
             //创建一个HttpClientContext对象
@@ -52,7 +75,7 @@ public class getP2pMessages implements Callable
                     stringBuffer.append(inputLine);
                 }
                 //解析响应体
-                List<Map<String, Object>> messages = MAPPER.readValue(stringBuffer.toString(), List.class);
+                List<Map<String, Object>> messages = MAPPER.readValue(stringBuffer.toString() , List.class);
                 return messages;
             }
             catch (Exception e)

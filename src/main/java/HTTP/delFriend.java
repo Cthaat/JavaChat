@@ -13,17 +13,26 @@ import java.io.InputStreamReader;
 
 import static HTTP.logInServletReq.cookieStore;
 
+
 public class delFriend implements delFriendImp
 {
     @Override
     public boolean delFriendByName(String friendName)
     {
-        try (CloseableHttpClient httpclient = HttpClients.createDefault();)
+        /**
+         * @description: 删除好友
+         * @param:
+         * @param friendName 好友的昵称
+         * @return: boolean
+         * @author Edge
+         * @date: 2024/6/22 13:03
+         */
+        try (CloseableHttpClient httpclient = HttpClients.createDefault() ;)
         {
             //创建一个HttpPost对象，指定请求的URL
             HttpPost post2 = new HttpPost("http://localhost:8080/delMyFriend");
             //设置请求头
-            post2.addHeader("Content-Type", "application/json");
+            post2.addHeader("Content-Type" , "application/json");
             //设置请求体
             post2.setEntity(new StringEntity("hello"));
             //创建一个HttpClientContext对象

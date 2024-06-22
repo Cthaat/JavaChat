@@ -28,17 +28,27 @@ public class logInServletReq implements logInServletReqImp
     public static final ObjectMapper MAPPER = new ObjectMapper();
     // 创建一个CookieStore对象
     public static CookieStore cookieStore = new BasicCookieStore();
+
     @Override
-    public boolean logIn(String userName, String password)
+    public boolean logIn(String userName , String password)
     {
+        /**
+         * @description: 向服务器发送登录请求，并获取响应结果
+         * @param:
+         * @param userName
+         * @param password
+         * @return: boolean
+         * @author Edge
+         * @date: 2024/6/22 13:13
+         */
         try (CloseableHttpClient httpclient = HttpClients.createDefault() ;)
         {
             HttpPost post = new HttpPost("http://localhost:8080/logoInResp");
-            post.addHeader("Content-Type", "application/json");
+            post.addHeader("Content-Type" , "application/json");
             post.setEntity(new StringEntity("hello"));
             //设置请求参数
             post.setHeader("userName" , userName);
-            post.setHeader("password", password);
+            post.setHeader("password" , password);
             HttpClientContext context = HttpClientContext.create();
             context.setCookieStore(cookieStore);
             try (CloseableHttpResponse response = httpclient.execute(post , context))

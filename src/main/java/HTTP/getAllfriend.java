@@ -15,13 +15,25 @@ import java.util.concurrent.Callable;
 import static HTTP.logInServletReq.MAPPER;
 import static HTTP.logInServletReq.cookieStore;
 
+/**
+ * @Auther: Edge
+ * @Date: 2024/6/22 13:45
+ * @Description: TODO
+ * @version: 1.0
+ **/
 public class getAllfriend implements getAllFriendsImp, Callable
 {
-
     // 实现getAllFriends方法，获取全部好友信息
     @Override
     public List<Map<String, Object>> getAllFriends()
     {
+        /**
+         * @description: 获取全部好友信息
+         * @param: 
+         * @return: java.util.List<java.util.Map < java.lang.String , java.lang.Object>>
+         * @author Edge
+         * @date: 2024/6/22 13:45
+         **/
         try (CloseableHttpClient httpclient = HttpClients.createDefault() ;)
         {
             // 创建HttpPost对象，设置请求url

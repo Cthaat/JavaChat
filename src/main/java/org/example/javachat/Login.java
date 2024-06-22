@@ -23,6 +23,12 @@ import java.util.Map;
 import static org.example.javachat.Main.addView;
 import static org.example.javachat.Main.changeView;
 
+/**
+ * @Auther: Edge
+ * @Date: 2024/6/22 13:45
+ * @Description: TODO
+ * @version: 1.0
+ **/
 public class Login
 {
     // 主界面
@@ -86,6 +92,13 @@ public class Login
     @FXML
     public void initialize()
     {
+        /**
+         * @description: 初始化登录界面
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:45
+         **/
         FXUtil.initLogin(mainPane , closeButton , minimizeButton , avatar);
     }
 
@@ -94,6 +107,15 @@ public class Login
     @FXML
     public void doLogup()
     {
+
+        /**
+         * @description: 打印Logup
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:46
+         **/
+
         System.out.println("Logup");
         // 设置logupLabel文本颜色为蓝色
         logupLabel.setStyle("-fx-text-fill: blue;");
@@ -105,6 +127,15 @@ public class Login
     @FXML
     public void doLogin()
     {
+
+        /**
+         * @description: 执行登录操作
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:46
+         **/
+
         // 获取账号和密码
         String accountStr = account.getText();
         String passwordStr = password.getText();
@@ -145,6 +176,16 @@ public class Login
     @FXML
     public void loginButtonAction(KeyEvent event)
     {
+
+        /**
+         * @description: 当按下登录按钮时触发
+         * @param:
+         * @param event 按下事件
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:46
+         **/
+
         // 当按下回车键时触发
         if (event.getCode() == KeyCode.ENTER)
         {
@@ -157,6 +198,15 @@ public class Login
     @FXML
     public void Close()
     {
+
+        /**
+         * @description: 当点击关闭按钮时触发
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:46
+         **/
+
         System.out.println("Close");
         // 退出程序
         System.exit(0);
@@ -166,6 +216,15 @@ public class Login
     @FXML
     public void Minimize()
     {
+
+        /**
+         * @description: 当点击最小化按钮时触发
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:46
+         **/
+
         System.out.println("Minimize");
         // 获取当前窗口
         Stage stage = (Stage) minimizeButton.getScene().getWindow();
@@ -177,6 +236,15 @@ public class Login
     @FXML
     public void settleUponWindow()
     {
+
+        /**
+         * @description: 鼠标按下时触发
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:46
+         **/
+
         // 获取主面板
         mainPane.setOnMousePressed(event ->
         {
@@ -190,6 +258,14 @@ public class Login
     @FXML
     public void dragWindow()
     {
+        /**
+         * @description: 鼠标拖动时触发
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:46
+         **/
+
         // 获取舞台
         Stage stage = (Stage) minimizeButton.getScene().getWindow();
         // 设置鼠标拖动事件
@@ -206,6 +282,15 @@ public class Login
     @FXML
     public void setWindow()
     {
+
+        /**
+         * @description: 设置窗口
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:47
+         **/
+
         // 设置窗口透明度为1.0
         Stage stage = (Stage) minimizeButton.getScene().getWindow();
         mainPane.setOnMouseReleased(event -> stage.setOpacity(1.0));
@@ -214,6 +299,15 @@ public class Login
     @FXML
     public void hoverCloseButton()
     {
+
+        /**
+         * @description: 鼠标进入关闭按钮时触发
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:47
+         **/
+
         // 当鼠标进入关闭按钮时显示关闭按钮标签
         closeButton.setOnMouseEntered(event -> closeButtonLabelHover.setVisible(true));
     }
@@ -221,6 +315,15 @@ public class Login
     @FXML
     public void exitCloseButton()
     {
+
+        /**
+         * @description: 鼠标离开关闭按钮时触发
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:47
+         **/
+
         // 当鼠标离开关闭按钮时隐藏关闭按钮标签
         closeButton.setOnMouseExited(event -> closeButtonLabelHover.setVisible(false));
     }
@@ -228,6 +331,15 @@ public class Login
     @FXML
     public void hoverMinimizeButton()
     {
+
+        /**
+         * @description: 鼠标进入最小化按钮时触发
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:47
+         **/
+
         // 当鼠标进入最小化按钮时显示最小化按钮标签
         minimizeButton.setOnMouseEntered(event -> minButtonLabelHover.setVisible(true));
     }
@@ -235,9 +347,16 @@ public class Login
     @FXML
     public void exitMinimizeButton()
     {
+
+        /**
+         * @description: 鼠标离开最小化按钮时触发
+         * @param:
+         * @return: void
+         * @author Edge
+         * @date: 2024/6/22 13:47
+         **/
+
         // 当鼠标离开最小化按钮时隐藏最小化按钮标签
         minimizeButton.setOnMouseExited(event -> minButtonLabelHover.setVisible(false));
     }
-
-
 }
