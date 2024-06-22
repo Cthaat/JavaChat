@@ -19,5 +19,9 @@ Java Chat 这是我大一下半学期的期末大作业，界面采用比起swin
 
 ## UI设计
 
-![登录界面](https://github.com/Cthaat/JavaChat/blob/master/UI.png)
+ - 登陆界面 <br/>
+ 
+![登录界面](https://github.com/Cthaat/JavaChat/blob/master/src/main/resources/runTimePic/logIn.png)
+
+ - 
 
