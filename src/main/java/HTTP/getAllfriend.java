@@ -29,7 +29,7 @@ public class getAllfriend implements getAllFriendsImp, Callable
     {
         /**
          * @description: 获取全部好友信息
-         * @param: 
+         * @param:
          * @return: java.util.List<java.util.Map < java.lang.String , java.lang.Object>>
          * @author Edge
          * @date: 2024/6/22 14:03
@@ -53,13 +53,14 @@ public class getAllfriend implements getAllFriendsImp, Callable
             }
             catch (IOException e)
             {
-                throw new RuntimeException(e);
+                System.out.println("获取好友信息失败！");
             }
         }
         catch (Exception e)
         {
-            throw new RuntimeException(e);
+            System.out.println("获取好友信息失败！");
         }
+        return null;
     }
 
 

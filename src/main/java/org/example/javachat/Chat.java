@@ -80,22 +80,25 @@ public class Chat
          * @date: 2024/6/22 13:15
          */
         userName.setText(username);
-        for (Map<String, Object> message : messages)
+        if (messages!= null)
         {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
-            HBox messageLabel = new HBox();
-            HBox textLabel = new HBox();
-            messageLabel.getChildren().add(new Label(message.get("send_user_name") + "  "));
-            messageLabel.getChildren().add(new Label(simpleDateFormat.format(message.get("date")) + "  "));
-            textLabel.getChildren().add(new Label(message.get("text") + "  "));
+            for (Map<String, Object> message : messages)
+            {
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+                HBox messageLabel = new HBox();
+                HBox textLabel = new HBox();
+                messageLabel.getChildren().add(new Label(message.get("send_user_name") + "  "));
+                messageLabel.getChildren().add(new Label(simpleDateFormat.format(message.get("date")) + "  "));
+                textLabel.getChildren().add(new Label(message.get("text") + "  "));
             /*
             设置样式
             背景半透明，边框，圆角，字体颜色
             */
-            messageLabel.setStyle("-fx-background-color: rgba(255, 0.5, 0.5, 0.1); -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 5px; -fx-text-fill: #000000;");
-            textLabel.setStyle("-fx-background-color: rgba(255, 0.5, 0.5, 0.1); -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 5px; -fx-text-fill: #000000; -fx-padding: 5px;");
-            chatVBox.getChildren().addAll(messageLabel , textLabel);
+                messageLabel.setStyle("-fx-background-color: rgba(255, 0.5, 0.5, 0.1); -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 5px; -fx-text-fill: #000000;");
+                textLabel.setStyle("-fx-background-color: rgba(255, 0.5, 0.5, 0.1); -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 5px; -fx-text-fill: #000000; -fx-padding: 5px;");
+                chatVBox.getChildren().addAll(messageLabel , textLabel);
+            }
         }
         // 让VBox在打开时自动滚动到底部
         DoubleBinding height = Bindings.createDoubleBinding(() -> chatVBox.getHeight() , chatVBox.heightProperty());

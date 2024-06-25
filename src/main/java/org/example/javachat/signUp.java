@@ -1,5 +1,6 @@
 package org.example.javachat;
 
+import HTTP.signUpSer;
 import Util.FXUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -108,8 +111,7 @@ public class signUp
     @FXML
     private Label returnToLogInLabelHover;
 
-
-    // 初始化
+    // 选择头像
     // 初始化
     @FXML
     public void initialize()
@@ -138,7 +140,43 @@ public class signUp
     // 注册
     public void doSignUp()
     {
-
+        String accountText = account.getText();
+        String passwordText = password.getText();
+        String passwordAgainText = passwordAgain.getText();
+        accountEmptyError.setVisible(false);
+        passwordEmptyError.setVisible(false);
+        if (account.getText().isEmpty())
+        {
+            accountEmptyError.setVisible(true);
+            return;
+        }
+        if (password.getText().isEmpty())
+        {
+            passwordEmptyError.setVisible(true);
+            return;
+        }
+        if (passwordAgain.getText().isEmpty())
+        {
+            passwordAgainError.setVisible(true);
+            return;
+        }
+        if (!passwordText.equals(passwordAgainText))
+        {
+            passwordAgainError.setVisible(true);
+            return;
+        }
+        // 调用注册接口
+        signUpSer signUp = new signUpSer();
+        if (signUp.signUp(accountText, passwordText))
+        {
+            System.out.println("注册成功");
+            // 切换到登录界面
+            changeView("Login.fxml");
+        }
+        else
+        {
+            System.out.println("注册失败");
+        }
     }
 
     // 返回登录
@@ -409,5 +447,15 @@ public class signUp
 
         System.out.println("About");
         Main.addView("about.fxml" , "About");
+    }
+
+    // 注册按钮的事件
+    @FXML
+    public void signUpButtonAction(KeyEvent event)
+    {
+        if (event.getCode() == KeyCode.ENTER)
+        {
+            this.doSignUp();
+        }
     }
 }

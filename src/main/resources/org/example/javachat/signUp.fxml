@@ -12,8 +12,8 @@
             xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.example.javachat.signUp">
     <children>
-        <TextField fx:id="account" layoutX="153.0" layoutY="177.0"/>
-        <PasswordField fx:id="password" layoutX="153.0" layoutY="228.0"/>
+        <TextField fx:id="account" layoutX="153.0" layoutY="177.0" onKeyPressed="#signUpButtonAction"/>
+        <PasswordField fx:id="password" layoutX="153.0" layoutY="228.0" onKeyPressed="#signUpButtonAction"/>
         <Button fx:id="signUpButton" layoutX="153.0" layoutY="322.0" mnemonicParsing="false" onAction="#doSignUp"
                 prefHeight="23.0" prefWidth="106.0" style="-fx-background-color: skyblue; -fx-background-radius: 50px;"
                 text="注册" textFill="#575757">
@@ -91,7 +91,7 @@
                style="-fx-background-color: black; -fx-opacity: 0.1;" visible="false"/>
         <Label fx:id="selectAvatarLabel" alignment="CENTER" layoutX="202.0" layoutY="132.0" prefHeight="23.0"
                prefWidth="62.0" text="选择图片"/>
-        <PasswordField fx:id="passwordAgain" layoutX="151.0" layoutY="274.0"/>
+        <PasswordField fx:id="passwordAgain" layoutX="151.0" layoutY="274.0" onKeyPressed="#signUpButtonAction"/>
         <Label fx:id="passwordAgainLabel" layoutX="79.0" layoutY="273.0" prefHeight="26.0" prefWidth="71.0"
                text="重复密码" textFill="#595959">
             <padding>
