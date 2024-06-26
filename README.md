@@ -60,7 +60,7 @@ Thank you for your reading.😘
 
 #### register
 
-- [ ] Input box validation
+- [x] Input box validation
 - [ ] verification code
 - [ ] Register Successful Alert
 - [ ] Avatar Settings
